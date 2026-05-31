@@ -34,9 +34,9 @@ const DAY_COLORS = ["#ff6b6b","#ffa94d","#69db7c","#4dabf7","#da77f2","#ffd43b"]
 const VIEWS = ["行程","住宿","備選","清單"];
 const VIEW_ICONS = ["📋","🏨","🔀","✅"];
 
-const MAP = {
-  kyotoHotel:"https://maps.app.goo.gl/F9GBqC8weUcmGoHMA",
-  osakaHotel:"https://maps.app.goo.gl/7uJk13Q82oK7KeV3A",
+const M = {
+  kyotoHotel:"https://maps.app.goo.gl/9vvryfcPCP5vBSQC6",
+  osakaHotel:"https://maps.app.goo.gl/SFRhmCDKeLHrWjFM8",
   familymart1F:"https://maps.app.goo.gl/uLvwWSD76t5TXQo9A",
   sevenStation:"https://maps.app.goo.gl/doTnG1syTseAuNna8",
   lawson10min:"https://maps.app.goo.gl/9toLPsaAUp1ERrqC6",
@@ -55,6 +55,7 @@ const MAP = {
   coffeeSandwichRice:"https://maps.app.goo.gl/MJb9KU7L1TPqwf45A",
   coffeeSandwich:"https://maps.app.goo.gl/nhyNUDGm8GtAoccq6",
   bakery:"https://maps.app.goo.gl/WRB6UcSxsNFQWRqw5",
+  coffeeChain:"https://maps.app.goo.gl/TX9pk5PF7SRvNzAo6",
   fushimiInari:"https://maps.app.goo.gl/hUXSCMHgNR49XpDM6",
   inariCoffee:"https://maps.app.goo.gl/xAMXMekdETo6QnyH7",
   gionShirakawa:"https://maps.app.goo.gl/99U1EqVaxMukbiH49",
@@ -81,11 +82,13 @@ const MAP = {
   ninjaKissa:"https://maps.app.goo.gl/zzbVYgyfXZKT8chX9",
   wagyu2:"https://maps.app.goo.gl/EhAhgfMvCY7cLpEd7",
   arashiyamaOnsen:"https://maps.app.goo.gl/hpg96MbY3Y9xgAeY9",
+  yuzenHikari:"https://maps.app.goo.gl/hY1g3XL3sbYE9tQJ9",
   toeiStudio:"https://maps.app.goo.gl/NAyqqbpwaLnrp33W6",
   byodoin:"https://maps.app.goo.gl/sRZUx8vysvyHijAP6",
   matchaStreet:"https://maps.app.goo.gl/72YYEkUoZsDvYhhn6",
   nakamuraFujikichi:"https://maps.app.goo.gl/FH6TsvBhS3eV6cRG8",
   nintendoMuseum:"https://maps.app.goo.gl/3mjstP7h9RqSxLvd9",
+  ujiStation:"https://maps.app.goo.gl/LxaA9jzzj8aaibtN9",
   katsuoji:"https://maps.app.goo.gl/J9vWPtKV8YBq4A9u8",
   umedaTomJerry:"https://maps.app.goo.gl/bCUfxXVx7z8md6q77",
   umedaGhibli:"https://maps.app.goo.gl/o4xuYGSigznNoQ8X7",
@@ -99,23 +102,20 @@ const MAP = {
   sushiGenroku:"https://maps.app.goo.gl/LNA3p1YyDy7YQhDW9",
   shinsaibashi:"https://maps.app.goo.gl/7pTA27YsGY8Y9f2w9",
   aoyamon:"https://maps.app.goo.gl/EEdCnvn2f4DbKW4CA",
-  chuo_kokaido:"https://maps.app.goo.gl/mHEX4P3DNNvvXrGS7",
+  chuoKokaido:"https://maps.app.goo.gl/mHEX4P3DNNvvXrGS7",
   nambaBridge:"https://maps.app.goo.gl/KVoLA6TWuA5uCQ2X7",
   outletMain:"https://maps.app.goo.gl/FLS59BvjKKRTgJNx5",
   outletLuggage:"https://maps.app.goo.gl/LmjguSRLgJevzM3y7",
   outletMainSide:"https://maps.app.goo.gl/1SDbNor5XnhXDKih7",
   outletSea:"https://maps.app.goo.gl/CR8K4iorb469ZLob7",
   outletElec:"https://maps.app.goo.gl/fitPa8eGDJj5DEJ46",
-  coffeeChain:"https://maps.app.goo.gl/TX9pk5PF7SRvNzAo6",
-  kyotoRailMuseum:"https://maps.app.goo.gl/ZyJRfkYgMyYZk5Dh9",
-  ujiStation:"https://maps.app.goo.gl/LxaA9jzzj8aaibtN9",
-  parkingLot:"https://maps.app.goo.gl/C1mWmbWttAvnfWW57",
-  navKixKyoto:"https://maps.app.goo.gl/428GB9kbWxYQmU8A9",
-  yuzenHikari:"https://maps.app.goo.gl/hY1g3XL3sbYE9tQJ9",
   mocad:"https://maps.app.goo.gl/ENc738Xffn8fbd377",
   gekkeikan:"https://maps.app.goo.gl/BRrekFLcXWuDzFG8A",
   kyotoAquarium:"https://maps.app.goo.gl/tfXNBU9WViwHvt6x8",
   sanjusangendo:"https://maps.app.goo.gl/HS5mTxEavXj4AN2j6",
+  kyotoRailMuseum:"https://maps.app.goo.gl/ZyJRfkYgMyYZk5Dh9",
+  parkingLot:"https://maps.app.goo.gl/C1mWmbWttAvnfWW57",
+  navKixKyoto:"https://maps.app.goo.gl/428GB9kbWxYQmU8A9",
 };
 
 const openMap = (url) => { if(url) window.open(url,"_blank"); };
@@ -124,36 +124,36 @@ const HOTELS = {
   京都:{
     name:"梅小路皇家公園酒店",nights:"Day 1–3（3晚）",
     area:"梅小路京都西站・步行2分鐘",checkin:"15:00",checkout:"11:00",
-    emoji:"🏯",mapUrl:MAP.kyotoHotel,
-    features:["飯店1F有全家便利商店","步行3分鐘到京都水族館","JR嵯峨野線直達嵐山只要11分鐘","京都車站只要1站3分鐘"],
+    emoji:"🏯",mapUrl:M.kyotoHotel,
+    features:["飯店1F有全家便利商店","步行3分鐘到京都水族館（下雨備案E）","JR嵯峨野線直達嵐山只要11分鐘","京都車站只要1站3分鐘","京都鐵道博物館步行可到（下雨備案G）"],
     nearby:[
-      {name:"🏪 全家(1F)",url:MAP.familymart1F},
-      {name:"🏪 7-11(車站)",url:MAP.sevenStation},
-      {name:"🏪 LAWSON(10分鐘)",url:MAP.lawson10min},
-      {name:"🛒 京都車站超市",url:MAP.kyotoSupermarket},
-      {name:"🍽️ 海鮮市場旁定食",url:MAP.seafoodTeishoku},
-      {name:"🍢 炭火串燒",url:MAP.charcoalYakitori},
-      {name:"🍱 傳統日式餐廳",url:MAP.japaneseRest},
+      {name:"🏪 全家(1F)",url:M.familymart1F},
+      {name:"🏪 7-11(車站)",url:M.sevenStation},
+      {name:"🏪 LAWSON(10分鐘)",url:M.lawson10min},
+      {name:"🛒 京都車站超市",url:M.kyotoSupermarket},
+      {name:"🍽️ 海鮮市場旁定食",url:M.seafoodTeishoku},
+      {name:"🍢 炭火串燒",url:M.charcoalYakitori},
+      {name:"🍱 傳統日式餐廳",url:M.japaneseRest},
     ],
   },
   大阪:{
     name:"大阪四季靱公園酒店",nights:"Day 4–5（2晚）",
     area:"靱公園旁・頂級市中心位置",checkin:"15:00",checkout:"11:00",
-    emoji:"🌆",mapUrl:MAP.osakaHotel,
+    emoji:"🌆",mapUrl:M.osakaHotel,
     features:["計程車10分鐘到梅田","步行可達心齋橋購物街","頂級四季服務，最佳休息恢復","附近多間餐廳與咖啡廳"],
     nearby:[
-      {name:"🏪 7-11(巷子)",url:MAP.seven711alley},
-      {name:"🏪 7-11(過馬路)",url:MAP.seven711cross},
-      {name:"🏪 全家(過馬路)",url:MAP.familymartCross},
-      {name:"🏪 LAWSON(近)",url:MAP.lawsonNear},
-      {name:"🏪 LAWSON(車站出口9)",url:MAP.lawsonExit9},
-      {name:"🛒 LIFE超市",url:MAP.lifeSuper},
-      {name:"🍽️ 定食店",url:MAP.osakaTeishoku},
-      {name:"☕ 咖啡+麵包",url:MAP.coffeeBreakfast},
-      {name:"☕ 咖啡+三明治+飯",url:MAP.coffeeSandwichRice},
-      {name:"☕ 咖啡+三明治",url:MAP.coffeeSandwich},
-      {name:"🥐 麵包店",url:MAP.bakery},
-      {name:"☕ 到處都有的珈琲店",url:MAP.coffeeChain},
+      {name:"🏪 7-11(巷子)",url:M.seven711alley},
+      {name:"🏪 7-11(過馬路)",url:M.seven711cross},
+      {name:"🏪 全家(過馬路)",url:M.familymartCross},
+      {name:"🏪 LAWSON(近)",url:M.lawsonNear},
+      {name:"🏪 LAWSON(車站出口9)",url:M.lawsonExit9},
+      {name:"🛒 LIFE超市",url:M.lifeSuper},
+      {name:"🍽️ 定食店",url:M.osakaTeishoku},
+      {name:"☕ 咖啡+麵包",url:M.coffeeBreakfast},
+      {name:"☕ 咖啡+三明治+飯",url:M.coffeeSandwichRice},
+      {name:"☕ 咖啡+三明治",url:M.coffeeSandwich},
+      {name:"🥐 麵包店",url:M.bakery},
+      {name:"☕ 到處都有的珈琲店",url:M.coffeeChain},
     ],
   },
 };
@@ -167,8 +167,8 @@ const CHECKLIST = [
   {id:"haruka",day:"出發前",text:"HARUKA 車票最晚 6/1 設定（五張票已入帳戶，尚未選車次）"},
   {id:"iccard",day:"出發前",text:"實體 IC 卡（Suica/ICOCA）已儲值，可到京都再儲值"},
   {id:"gear",day:"出發前",text:"摺疊傘・防曬・全家人最好走的運動鞋"},
-  {id:"train",day:"Day 2",text:"嵐山小火車票已訂 6/2 10:30 發車「龜岡往嵯峨」✅"},
-  {id:"kinkaku",day:"Day 3",text:"金閣寺門票現場買（6/3）"},
+  {id:"train",day:"Day 2",text:"嵐山小火車票 ✅ 已訂 6/2 10:30「龜岡往嵯峨」"},
+  {id:"kinkaku",day:"Day 2",text:"金閣寺門票現場買（6/2）"},
   {id:"mii",day:"Day 3前",text:"6/3 14:00 前設好任天堂 Mii 頭像"},
   {id:"katsuo",day:"Day 3前",text:"勝尾寺門票 6/3 前買好"},
   {id:"car",day:"Day 4",text:"包車司機確認：6/4 10:30 宇治車站集合"},
@@ -176,192 +176,216 @@ const CHECKLIST = [
 ];
 
 const KYOTO_BACKUPS = [
-  {emoji:"👘",name:"京都傳統產業博物館 MOCAD",sub:"74種工藝・職人現場示範",tags:["觀光"],cost:"免費",tip:"平安神宮旁，全室內冷氣，雨天首選",mapUrl:MAP.mocad},
-  {emoji:"🍶",name:"月桂冠大倉紀念館",sub:"380年清酒・3杯試飲+贈小瓶",tags:["觀光","餐飲"],cost:"¥600",tip:"中書島站步行5分，旁邊有十石舟河岸步道",mapUrl:MAP.gekkeikan},
-  {emoji:"🐟",name:"京都水族館",sub:"就在飯店對面・步行3分鐘",tags:["觀光"],cost:"¥2,200",tip:"飯店門口！大山椒魚+水母奇觀，下雨必去",mapUrl:MAP.kyotoAquarium},
-  {emoji:"⛩️",name:"三十三間堂",sub:"1001尊觀音・日本最長木造建築",tags:["觀光"],cost:"¥600",tip:"京都車站搭巴士5分鐘，下雨穿廊超美",mapUrl:MAP.sanjusangendo},
-  {emoji:"🚂",name:"京都鐵道博物館",sub:"走路可到・電車停駛備案",tags:["觀光"],cost:"¥1,500",tip:"飯店步行可到！雨天或電車停駛的最佳備案",mapUrl:MAP.kyotoRailMuseum},
+  {emoji:"👘",name:"備案A：清水寺週邊散策",sub:"二年坂・三年坂・八坂之塔",tags:["觀光"],cost:"免費散步",tip:"塌塌米星巴克要脫鞋，緩坡好走",mapUrl:M.yasaka5tower},
+  {emoji:"🎬",name:"備案B：東映太秦電影村",sub:"武士體驗・真刀決鬥秀・豪大雨首選",tags:["觀光"],cost:"¥2,400",tip:"JR太秦站步行5分，全室內可吹冷氣",mapUrl:M.toeiStudio},
+  {emoji:"👘",name:"備選C：京都傳統產業博物館 MOCAD",sub:"74種工藝・職人現場示範・雨天首選",tags:["觀光"],cost:"免費",tip:"平安神宮旁，全室內冷氣",mapUrl:M.mocad},
+  {emoji:"🍶",name:"備選D：月桂冠大倉紀念館",sub:"380年清酒・3杯試飲+贈小瓶",tags:["觀光","餐飲"],cost:"¥600",tip:"中書島站步行5分，旁邊有十石舟河岸步道",mapUrl:M.gekkeikan},
+  {emoji:"🐟",name:"備選E：京都水族館",sub:"飯店對面步行3分鐘・電車停駛首選",tags:["觀光"],cost:"¥2,200",tip:"飯店直接走過去！大山椒魚+水母奇觀",mapUrl:M.kyotoAquarium},
+  {emoji:"⛩️",name:"備選F：三十三間堂",sub:"1001尊觀音・日本最長木造建築",tags:["觀光"],cost:"¥600",tip:"京都車站搭巴士5分鐘，下雨穿廊超美",mapUrl:M.sanjusangendo},
+  {emoji:"🚂",name:"備選G：京都鐵道博物館",sub:"步行可到・電車停駛備案二",tags:["觀光"],cost:"¥1,500",tip:"飯店步行可到，電車停駛最佳備案",mapUrl:M.kyotoRailMuseum},
 ];
 
 const DAYS = [
   {
     day:1,date:"6/1 一",emoji:"✈️",label:"抵達京都",hotelCity:"京都",city:"京都",
     spots:[
-      {time:"13:30",emoji:"🏨",name:"抵達・放行李",sub:"梅小路皇家公園酒店 Check-in",
-       desc:"搭 HARUKA 直達京都車站，轉 JR 嵯峨野線 1 站到「梅小路京都西」，步行 2 分鐘到飯店。",
-       tags:["交通","住宿"],cost:null,mapUrl:MAP.kyotoHotel,
-       tips:["飯店1F有全家可以補給","先放行李再輕裝出發"]},
-      {time:"16:15",emoji:"⛩️",name:"伏見稻荷大社",sub:"千本鳥居・傍晚人少光線最美",
-       desc:"走到奧社奉拜所就折返，約 45–60 分鐘。傍晚陽光灑在紅鳥居上光影絕美！24小時開放。",
-       tags:["觀光"],cost:"免費",rating:4.6,mapUrl:MAP.fushimiInari,
-       nearbyLinks:[{label:"☕ 稻彥咖啡&雙色冰淇淋",url:MAP.inariCoffee}],
-       tips:["狐狸咬稻穗=豐收、鑰匙=財富、珠寶=靈力","稻彥咖啡雙色冰淇淋必吃","即時影像可查人多不多"]},
-      {time:"18:30",emoji:"🌊",name:"祇園・鴨川・先斗町",sub:"京都最有氣氛的傍晚",
-       desc:"搭京阪電車 4 站到祇園四條。看納涼床川床、逛花見小路、享用晚餐。",
-       tags:["餐飲","觀光"],cost:null,mapUrl:MAP.gionShirakawa,
+      {time:"12:40",emoji:"🏨",name:"抵達・放行李",sub:"HARUKA直達京都車站→梅小路京都西",
+       desc:"搭 HARUKA 直達京都車站，轉 JR 嵯峨野線 1 站到「梅小路京都西」，步行 2 分鐘到飯店。整點14分、44分發車。",
+       tags:["交通","住宿"],cost:null,mapUrl:M.kyotoHotel,
+       nearbyLinks:[{label:"🗺️ 關西機場→京都車站導航",url:M.navKixKyoto}],
+       tips:["飯店1F有全家可以補給","先放行李再輕裝出發","可以的話16:00前到伏見稻荷"]},
+      {time:"16:00",emoji:"⛩️",name:"伏見稻荷大社",sub:"千本鳥居・傍晚人少光線最美",
+       desc:"走到奧社奉拜所就折返，約45–60分鐘。傍晚陽光灑在紅鳥居上光影絕美！24小時開放免費。",
+       tags:["觀光"],cost:"免費",rating:4.6,mapUrl:M.fushimiInari,
+       nearbyLinks:[{label:"☕ 稻彥咖啡&雙色冰淇淋",url:M.inariCoffee}],
+       tips:["狐狸咬稻穗=豐收、鑰匙=財富、珠寶=靈力","稻彥咖啡雙色冰淇淋必吃","傍晚4點後人潮漸散，光影最美"]},
+      {time:"18:30",emoji:"🌊",name:"祇園・鴨川・先斗町",sub:"納涼床・花見小路・京都最有氣氛的傍晚",
+       desc:"搭京阪電車4站到祇園四條。6月納涼床川床限定！鴨川旁吹風散步，先斗町巷弄享用晚餐。",
+       tags:["餐飲","觀光"],cost:null,mapUrl:M.gionShirakawa,
        nearbyLinks:[
-         {label:"☕ 川床星巴克",url:MAP.kawaStarbucks},
-         {label:"🥩 三嶋亭壽喜燒",url:MAP.mishimaYakiSuki},
-         {label:"🍤 天婦羅定食",url:MAP.tempuraTeishoku},
-         {label:"🥩 和牛壽喜燒",url:MAP.wagyu},
-         {label:"🍢 燒肉飛鳥",url:MAP.yakinikuAsuka},
+         {label:"☕ 川床星巴克",url:M.kawaStarbucks},
+         {label:"👍🥩 三嶋亭壽喜燒",url:M.mishimaYakiSuki},
+         {label:"👍🍤 天婦羅定食",url:M.tempuraTeishoku},
+         {label:"🥩 和牛壽喜燒涮涮鍋",url:M.wagyu},
+         {label:"🍢 燒肉飛鳥",url:M.yakinikuAsuka},
        ],
-       tips:["三嶋亭壽喜燒（強推）","川床星巴克打卡","鴨川等間隔法則超可愛"]},
+       tips:["三嶋亭壽喜燒強推","川床星巴克打卡","鴨川等間隔法則超可愛"]},
     ],
     alternates:[
-      {emoji:"👘",name:"☂️ 備選A：清水寺週邊散策",sub:"二年坂・三年坂・八坂之塔",
-       desc:"不必爬上寺廟！走二年坂、三年坂石板路與法觀寺八坂之塔（46公尺）。世界唯一塌塌米星巴克！",
-       tags:["觀光"],cost:"免費散步",mapUrl:MAP.yasaka5tower,
-       tips:["塌塌米星巴克要脫鞋","緩坡好走，累了隨時坐咖啡廳","下雨備選首選"]},
+      {emoji:"👘",name:"☂️ 備案A：清水寺週邊散策",sub:"二年坂・三年坂・八坂之塔（改道路線）",
+       desc:"改走三年坂→二年坂→花見小路→祇園白川→鴨川。不必爬上寺廟！法觀寺八坂之塔46公尺，世界唯一塌塌米星巴克。",
+       tags:["觀光"],cost:"免費散步",mapUrl:M.yasaka5tower,
+       tips:["塌塌米星巴克要脫鞋","緩坡好走，累了隨時坐咖啡廳"]},
     ],
   },
   {
-    day:2,date:"6/2 二",emoji:"🎋",label:"嵐山深度一日",hotelCity:"京都",city:"京都",
+    day:2,date:"6/2 二",emoji:"🎋",label:"嵐山＋金閣寺＋跳烏龜＋京都車站",hotelCity:"京都",city:"京都",
     spots:[
-      {time:"08:00",emoji:"🚂",name:"嵯峨野觀光小火車",sub:"龜岡→嵯峨・溪谷20分鐘",
-       desc:"從飯店搭JR到龜岡（25分鐘），換小火車沿保津川溪谷行駛，幸運能跟泛舟遊客揮手！",
-       tags:["交通","觀光"],cost:"¥880",rating:4.5,mapUrl:MAP.trokkoKameoka,
-       tips:["最晚6/2前預約「龜岡往嵯峨」","坐靠溪谷那側視野最好","6月初翠綠楓葉+溪水超美"]},
-      {time:"09:30",emoji:"🎋",name:"嵐山竹林小徑",sub:"早到人少・日本音風景百選",
-       desc:"從小火車站走出就是竹林高處，一路平緩下坡。風吹竹葉聲被列為日本音風景百選。",
-       tags:["觀光"],cost:"免費",rating:4.3,mapUrl:MAP.bambooGrove,
-       tips:["早上空氣最清新人最少","往下走就是天龍寺","體力指數🚶🚶"]},
-      {time:"10:30",emoji:"🏯",name:"天龍寺",sub:"世界遺產・借景庭園",
-       desc:"從竹林北門進、正門出。曹源池庭園「借景」讓嵐山成為花園一部分，日本最早的指定史蹟。",
-       tags:["觀光"],cost:"¥500",rating:4.4,mapUrl:MAP.tenryuji,
-       tips:["庭園步道寬敞，隨處有石椅","出正門就是熱鬧大街","體力指數🚶"]},
-      {time:"12:00",emoji:"🌉",name:"渡月橋・嵐山大街・友禪光林",sub:"午餐・足湯・600根彩色柱子",
-       desc:"河邊拍合照，找間店吃午餐。嵐電站內「友禪光林」600根彩色柱超美，月台還有足湯！",
-       tags:["餐飲","觀光"],cost:"足湯¥200",rating:4.5,mapUrl:MAP.togetsukyo,
+      {time:"09:40",emoji:"🚂",name:"嵯峨野觀光小火車",sub:"9:40前出門・10:30龜岡發車",
+       desc:"從飯店旁JR「梅小路京都西」搭到「JR龜岡站」（約25分鐘），走路10分換小火車。沿保津川溪谷行駛約20分鐘，幸運能跟泛舟遊客揮手！",
+       tags:["交通","觀光"],cost:"¥880",rating:4.5,mapUrl:M.trokkoKameoka,
+       tips:["已訂10:30發車「龜岡往嵯峨」✅","坐靠溪谷那側視野最好","9:40前一定要出門！"]},
+      {time:"11:00",emoji:"🎋",name:"嵐山竹林・天龍寺・渡月橋",sub:"竹林下坡→世界遺產庭園→河邊午餐",
+       desc:"小火車站走出就是竹林高處，一路平緩下坡。天龍寺北門進正門出，出來就是嵐山大街吃午餐。渡月橋拍大合照！",
+       tags:["觀光","餐飲"],cost:"天龍寺¥500",rating:4.4,mapUrl:M.bambooGrove,
        nearbyLinks:[
-         {label:"☕ 忍者咖啡廳",url:MAP.ninjaKissa},
-         {label:"🥩 平價和牛牛排",url:MAP.wagyu2},
-         {label:"♨️ 嵐山溫泉足湯",url:MAP.arashiyamaOnsen},
-         {label:"👘 友禪光林位置",url:MAP.yuzenHikari},
+         {label:"🎋 竹林",url:M.bambooGrove},
+         {label:"🏯 天龍寺",url:M.tenryuji},
+         {label:"🌉 渡月橋",url:M.togetsukyo},
+         {label:"☕ 忍者咖啡廳",url:M.ninjaKissa},
+         {label:"🥩 平價和牛牛排",url:M.wagyu2},
        ],
-       tips:["% Arabica 咖啡超好喝","友禪光林免門票直接進","回程JR只要11分鐘到飯店"]},
-    ],
-    alternates:[
-      {emoji:"👘",name:"☂️ 備選A：清水寺週邊散策",sub:"二年坂・三年坂・八坂之塔",
-       desc:"不必爬上寺廟！走二年坂、三年坂石板路與法觀寺八坂之塔（46公尺）。世界唯一塌塌米星巴克！",
-       tags:["觀光"],cost:"免費散步",mapUrl:MAP.yasaka5tower,
-       tips:["緩坡好走，累了隨時坐咖啡廳","塌塌米星巴克要脫鞋"]},
-      {emoji:"🎬",name:"🎬 備選B：東映太秦電影村",sub:"武士體驗・真刀決鬥秀",
-       desc:"真正的電影製片廠！完整重現江戶時代街道，劍劇秀有吊鋼絲特效。可付費穿武士服拍照。",
-       tags:["觀光"],cost:"¥2,400",mapUrl:MAP.toeiStudio,
-       tips:["從飯店搭JR到太秦站超近","全程室內可吹冷氣","大部分是平地體力消耗小"]},
-    ],
-  },
-  {
-    day:3,date:"6/3 三",emoji:"💧",label:"貴船・金閣・夜景",hotelCity:"京都",city:"京都",
-    spots:[
-      {time:"09:30",emoji:"💧",name:"貴船神社",sub:"森林水占卜・繪馬發源地",
-       desc:"搭叡山電車到貴船口，步行上山。水占卜籤詩掃 QR 自動翻中文！繪馬習俗就從這裡起源。",
-       tags:["觀光"],cost:"免費",rating:4.5,mapUrl:MAP.kibune,
-       tips:["比市區涼爽許多","水占卜：空白籤漂在水上文字才浮現","體力指數🚶🚶🚶"]},
-      {time:"12:30",emoji:"🐢",name:"出町柳・跳烏龜",sub:"鴨川三角洲・K-ON聖地",
-       desc:"賀茂川＋高野川交會處，踩烏龜形踏腳石過河！旁邊糺之森超好走，在此吃午餐。",
-       tags:["觀光"],cost:"免費",rating:4.6,mapUrl:MAP.demachiyanagi,
-       tips:["注意老鷹會搶食！","除了烏龜還有千鳥造型石頭","旁邊找間店吃午餐再出發"]},
-      {time:"15:30",emoji:"✨",name:"金閣寺",sub:"下午陽光最金碧輝煌",
-       desc:"三層樓暗藏將軍野心：一樓貴族、二樓武士、三樓禪宗，二三樓貼純金箔共20公斤！",
-       tags:["觀光"],cost:"¥500現場買",rating:4.6,mapUrl:MAP.kinkakuji,
-       nearbyLinks:[{label:"🥘 大阪燒（附近）",url:MAP.osakaYaki}],
+       tips:["早上空氣最清新人最少","竹林往下坡走非常好走","% Arabica 咖啡超好喝"]},
+      {time:"13:30",emoji:"👘",name:"友禪光林・嵐山溫泉足湯",sub:"600根彩色柱子・月台泡腳",
+       desc:"嵐電嵐山站內，600根京友禪彩色柱排列成光之林，免門票直接進。月台最深處有足湯，泡完再出發！",
+       tags:["觀光"],cost:"足湯¥200",mapUrl:M.yuzenHikari,
+       nearbyLinks:[{label:"♨️ 嵐山溫泉足湯",url:M.arashiyamaOnsen}],
+       tips:["免門票直接拍照","月台足湯消除疲勞","回程JR只要11分鐘到飯店"]},
+      {time:"15:00",emoji:"✨",name:"金閣寺",sub:"下午陽光最金碧輝煌・門票現場買",
+       desc:"三層樓暗藏將軍野心：一樓貴族、二樓武士、三樓禪宗，二三樓貼純金箔共20公斤！下午陽光照在鏡湖池倒影超美。",
+       tags:["觀光"],cost:"¥500現場買",rating:4.6,mapUrl:M.kinkakuji,
+       nearbyLinks:[{label:"🥘 大阪燒（附近）",url:M.osakaYaki}],
        tips:["記得看屋頂金鳳凰","繞一圈約40分鐘全程碎石平路","園內有抹茶茶點休息區"]},
-      {time:"18:00",emoji:"🚉",name:"京都車站夜景三部曲",sub:"伊勢丹・LED光影秀・Sky Garden",
-       desc:"18:00 晚餐 → 19:30 大階梯LED燈光秀 → 20:00 空中徑路平視京都塔 → 20:30 Sky Garden 360° 夜景",
-       tags:["餐飲","觀光"],cost:"免費入場",rating:4.0,mapUrl:MAP.kyotoStation,
+      {time:"17:00",emoji:"🐢",name:"出町柳・跳烏龜",sub:"鴨川三角洲・K-ON聖地",
+       desc:"賀茂川＋高野川交會處，踩烏龜形踏腳石過河！旁邊糺之森散步，在此找地方吃晚餐。",
+       tags:["觀光","餐飲"],cost:"免費",rating:4.6,mapUrl:M.demachiyanagi,
+       tips:["注意老鷹會搶食！","除了烏龜還有千鳥造型石頭","附近找間店吃晚餐"]},
+      {time:"19:30",emoji:"🚉",name:"京都車站夜景三部曲",sub:"LED光影秀・空中徑路・Sky Garden",
+       desc:"19:30 大階梯LED燈光秀 → 20:00 空中徑路平視京都塔 → 20:30 Sky Garden 360°夜景。晚餐可在此吃或出町柳吃完再來。",
+       tags:["觀光"],cost:"免費",rating:4.0,mapUrl:M.kyotoStation,
        nearbyLinks:[
-         {label:"🍔 東洋亭漢堡排",url:MAP.toyotei},
-         {label:"🍣 必吃回轉壽司",url:MAP.sushiSpot},
-         {label:"💡 大階梯LED秀",url:MAP.ledStairs},
-         {label:"🌉 空中徑路Skyway",url:MAP.skyway},
-         {label:"🌃 Sky Garden",url:MAP.skyGarden},
+         {label:"🍔 東洋亭漢堡排",url:M.toyotei},
+         {label:"🍣 必吃回轉壽司",url:M.sushiSpot},
+         {label:"💡 大階梯LED秀",url:M.ledStairs},
+         {label:"🌉 空中徑路Skyway",url:M.skyway},
+         {label:"🌃 Sky Garden",url:M.skyGarden},
        ],
        tips:["東洋亭漢堡排+冰鎮番茄沙拉超經典","搭JR只要1站3分鐘回飯店","善用大空手扶梯不用爬樓梯"]},
     ],
     alternates:[],
   },
   {
-    day:4,date:"6/4 四",emoji:"🍵",label:"宇治→任天堂→大阪",hotelCity:"大阪",city:"宇治→大阪",
+    day:3,date:"6/3 三",emoji:"💧",label:"貴船神社＋備選彈性日",hotelCity:"京都",city:"京都",
     spots:[
-      {time:"10:40",emoji:"🍵",name:"宇治平等院・抹茶街",sub:"10圓硬幣上的國寶・800年茶文化",
-       desc:"拿出10圓硬幣，上面的建築就在眼前！表參道被評為「最香風景街道百選」，整條街飄抹茶香。",
-       tags:["觀光","餐飲"],cost:"¥700",rating:4.5,mapUrl:MAP.byodoin,
+      {time:"09:30",emoji:"💧",name:"貴船神社",sub:"森林水占卜・繪馬發源地・山中秘境",
+       desc:"搭叡山電車到貴船口，步行上山。水占卜籤詩掃QR自動翻中文！繪馬習俗就從這裡起源，夏天比市區涼爽許多。",
+       tags:["觀光"],cost:"免費",rating:4.5,mapUrl:M.kibune,
+       tips:["比市區涼爽許多","水占卜：空白籤漂在水上文字才浮現","體力指數🚶🚶🚶"]},
+      {time:"14:00",emoji:"🍽️",name:"酒店附近晚餐 or 京都車站",sub:"視體力選擇：附近吃 or 京都車站夜景",
+       desc:"【輕鬆版】回飯店附近吃晚餐，順便逛梅小路公園散步。\n【加碼版】前往京都車站：伊勢丹11F晚餐＋大階梯LED燈光秀＋Sky Garden夜景。",
+       tags:["餐飲","觀光"],cost:null,mapUrl:M.kyotoStation,
        nearbyLinks:[
-         {label:"🍵 抹茶街",url:MAP.matchaStreet},
-         {label:"🍰 中村藤吉",url:MAP.nakamuraFujikichi},
+         {label:"🍔 東洋亭漢堡排",url:M.toyotei},
+         {label:"🍣 必吃回轉壽司",url:M.sushiSpot},
+         {label:"💡 大階梯LED秀",url:M.ledStairs},
+         {label:"🌃 Sky Garden",url:M.skyGarden},
        ],
-       tips:["中村藤吉抹茶蕎麥麵+霜淇淋必吃","全路平坦好走","包車司機在宇治站集合"]},
+       tips:["貴船回來若體力還好就去京都車站","附近吃完直接走回飯店也很好","明天包車日要早起，體力優先"]},
+    ],
+    alternates:[
+      {emoji:"👘",name:"☂️ 備案A：清水寺週邊散策",sub:"二年坂・三年坂・八坂之塔",
+       desc:"三年坂→二年坂→花見小路→祇園白川→鴨川。塌塌米星巴克！緩坡好走。",
+       tags:["觀光"],cost:"免費散步",mapUrl:M.yasaka5tower,
+       tips:["塌塌米星巴克要脫鞋","下雨也可以走，有屋簷遮"]},
+      {emoji:"🎬",name:"⛈️ 豪大雨方案一：東映太秦電影村",sub:"真正電影製片廠・全室內・武士決鬥秀",
+       desc:"完整重現江戶時代街道，劍劇秀有吊鋼絲特效。可付費穿武士服拍照。JR太秦站下車步行5分鐘。",
+       tags:["觀光"],cost:"¥2,400",mapUrl:M.toeiStudio,
+       tips:["豪大雨首選！全室內冷氣","從飯店搭JR嵯峨野線到太秦站","逛完可去京都車站shopping"]},
+      {emoji:"🏛️",name:"⛈️ 豪大雨方案二：備選CDEF",sub:"MOCAD・月桂冠・水族館・三十三間堂",
+       desc:"備選C京都傳統產業博物館、備選D月桂冠清酒館、備選E京都水族館（飯店步行3分）、備選F三十三間堂，全部都是下雨可去的室內景點。逛完去京都車站shopping。",
+       tags:["觀光"],cost:"各異",mapUrl:M.kyotoAquarium,
+       tips:["備選E水族館飯店直接步行","備選C/D需搭車","視體力選1-2個就好"]},
+      {emoji:"🐟",name:"⚡ 電車停駛方案一：京都水族館",sub:"飯店步行3分鐘・大山椒魚・水母",
+       desc:"就在飯店門口！電車停駛也能去。大山椒魚+水母奇觀360度環繞水槽，頂樓展望台看JR火車與東寺五重塔。",
+       tags:["觀光"],cost:"¥2,200",mapUrl:M.kyotoAquarium,
+       tips:["飯店直接步行3分鐘","全室內冷氣動線流暢","頂樓可看JR火車+東寺五重塔"]},
+      {emoji:"🚂",name:"⚡ 電車停駛方案二：京都鐵道博物館",sub:"飯店步行可到・備選G",
+       desc:"就在梅小路公園內，飯店步行即達。展示日本各時代火車，有實際可以體驗的模擬器，室內空間大。",
+       tags:["觀光"],cost:"¥1,500",mapUrl:M.kyotoRailMuseum,
+       tips:["飯店步行可到","電車停駛第二備案","逛完就在附近吃飯"]},
+    ],
+  },
+  {
+    day:4,date:"6/4 四",emoji:"🍵",label:"宇治→任天堂→達摩→大阪",hotelCity:"大阪",city:"宇治→大阪",
+    spots:[
+      {time:"10:00",emoji:"🚗",name:"前往宇治・包車會合",sub:"10:30宇治車站上車出發",
+       desc:"從梅小路搭車前往宇治，10:30在宇治車站與包車司機會合。今天包車行程：宇治→任天堂博物館→勝尾寺→大阪飯店。",
+       tags:["交通"],cost:null,mapUrl:M.ujiStation,
+       tips:["10:30宇治車站集合，不能遲到","包車司機聯絡方式已確認","今天行李包車直送大阪飯店"]},
+      {time:"10:40",emoji:"🍵",name:"宇治平等院・抹茶街",sub:"10圓硬幣上的國寶・800年茶文化",
+       desc:"拿出10圓硬幣，上面的建築就在眼前！表參道被評為「最香風景街道百選」，整條街飄抹茶香。中村藤吉抹茶蕎麥麵必吃。",
+       tags:["觀光","餐飲"],cost:"¥700",rating:4.5,mapUrl:M.byodoin,
+       nearbyLinks:[
+         {label:"🍵 抹茶街",url:M.matchaStreet},
+         {label:"🍰 中村藤吉",url:M.nakamuraFujikichi},
+       ],
+       tips:["中村藤吉抹茶蕎麥麵+霜淇淋必吃","全路平坦好走","鳳凰堂倒映在水面上超震撼"]},
       {time:"12:30",emoji:"🎮",name:"任天堂博物館",sub:"12:30準時入場・10枚代幣省著用",
-       desc:"1889年從花札紙牌起家！巨大控制器2人合力玩、腳下螢幕玩花札。全室內冷氣超舒服。",
-       tags:["觀光"],cost:"¥3,300",rating:4.5,mapUrl:MAP.nintendoMuseum,
-       tips:["6/3 14:00前設好Mii頭像","10枚代幣要省著玩","Shop有限定大手把抱枕","Hatena Burger自選配料漢堡"]},
+       desc:"1889年從花札紙牌起家！巨大控制器2人合力玩、腳下螢幕玩花札。全室內冷氣超舒服。Shop有限定大手把抱枕。",
+       tags:["觀光"],cost:"¥3,300",rating:4.5,mapUrl:M.nintendoMuseum,
+       tips:["6/3 14:00前設好Mii頭像","10枚代幣省著用","Shop有限定商品","Hatena Burger自選配料漢堡"]},
       {time:"14:30",emoji:"👺",name:"勝尾寺",sub:"滿山達摩・連天皇都認輸的勝利之寺",
        desc:"到處都是紅色達摩！買達摩先畫左眼許願，願望成真再畫右眼還願。連豐臣秀吉都來這求勝！",
-       tags:["觀光"],cost:"¥400（6/3前買）",rating:4.6,mapUrl:MAP.katsuoji,
+       tags:["觀光"],cost:"¥400（6/3前買）",rating:4.6,mapUrl:M.katsuoji,
        tips:["石頭上樹枝上都有達摩超好拍","體力指數🚶🚶","包車行程不用煩惱交通"]},
-      {time:"18:00",emoji:"🏨",name:"大阪四季酒店 Check-in・梅田採購",sub:"靱公園・頂級住宿",
+      {time:"18:00",emoji:"🏨",name:"大阪四季酒店 Check-in・梅田",sub:"靱公園・頂級住宿・梅田採購",
        desc:"從勝尾寺包車直達飯店 Check-in。整頓後前往梅田！百貨8:00關但餐廳區到10-11點。",
-       tags:["住宿","購物","餐飲"],cost:null,mapUrl:MAP.osakaHotel,
+       tags:["住宿","購物","餐飲"],cost:null,mapUrl:M.osakaHotel,
        nearbyLinks:[
-         {label:"🐱 湯姆與傑利",url:MAP.umedaTomJerry},
-         {label:"🎬 梅田吉卜力",url:MAP.umedaGhibli},
-         {label:"🎮 任天堂購物區",url:MAP.umedaNintendo},
+         {label:"🐱 湯姆與傑利",url:M.umedaTomJerry},
+         {label:"🎬 梅田吉卜力",url:M.umedaGhibli},
+         {label:"🎮 任天堂購物區",url:M.umedaNintendo},
        ],
        tips:["阪急地下食品街=百貨界天花板","吉卜力/任天堂/湯姆傑利都在梅田","百貨8:00關但餐廳到10-11點"]},
     ],
     alternates:[],
   },
   {
-    day:5,date:"6/5 五",emoji:"🦁",label:"難波獅子・道頓堀",hotelCity:"大阪",city:"大阪",
+    day:5,date:"6/5 五",emoji:"🦁",label:"難波獅子・道頓堀・大阪城or中之島",hotelCity:"大阪",city:"大阪",
     spots:[
       {time:"10:00",emoji:"🦁",name:"難波八坂神社",sub:"12公尺巨大獅子頭・吞掉厄運",
        desc:"高12公尺寬11公尺的獅子頭！象徵把四方厄運一口吞下招來財運。晚上眼睛會發光，鼻子有喇叭！",
-       tags:["觀光"],cost:"免費",rating:4.5,mapUrl:MAP.nanbaYasaka,
+       tags:["觀光"],cost:"免費",rating:4.5,mapUrl:M.nanbaYasaka,
        tips:["定點拍照很輕鬆","鼻子裡有喇叭節慶播音樂","體力指數🚶"]},
-      {time:"11:00",emoji:"🐙",name:"道頓堀・固力果跑跑人",sub:"必拍！螃蟹道樂腳真的會動",
-       desc:"大阪食倒精神聖地。下層蜻蜓步道沿河散步比樓上舒服。浮世小路穿越大正時代街景。",
-       tags:["餐飲","觀光"],cost:null,rating:4.5,mapUrl:MAP.ebisubashi,
+      {time:"11:00",emoji:"🐙",name:"道頓堀・固力果跑跑人・心齋橋",sub:"必拍螃蟹道樂・浮世小路・購物天堂",
+       desc:"大阪食倒精神聖地。螃蟹道樂的腳真的會動！下層蜻蜓步道沿河散步比樓上舒服。心齋橋380年歷史全天候拱頂，梅雨躲雨首選。",
+       tags:["餐飲","觀光","購物"],cost:null,rating:4.5,mapUrl:M.ebisubashi,
        nearbyLinks:[
-         {label:"📍 特色招牌街",url:MAP.signStreet},
-         {label:"🛤️ 浮世小路",url:MAP.ukiyokoji},
-         {label:"🥩 FB壽喜燒",url:MAP.sukiyakiFB},
-         {label:"🥩 FB黑毛和牛",url:MAP.wagyu3},
-         {label:"🍣 元祿回轉壽司",url:MAP.sushiGenroku},
+         {label:"📍 特色招牌街",url:M.signStreet},
+         {label:"🛤️ 浮世小路",url:M.ukiyokoji},
+         {label:"🥩 FB壽喜燒",url:M.sukiyakiFB},
+         {label:"🥩 FB黑毛和牛",url:M.wagyu3},
+         {label:"🍣 元祿回轉壽司",url:M.sushiGenroku},
+         {label:"🛍️ 心齋橋筋",url:M.shinsaibashi},
        ],
-       tips:["下層河道步道避開人群","章魚燒/串炸/壽喜燒隨便吃都好","水上觀光船20分鐘看完所有招牌"]},
-      {time:"14:00",emoji:"🛍️",name:"心齋橋筋",sub:"380年歷史全天候拱頂商街",
-       desc:"6月梅雨躲雨首選！大丸百貨 Art Deco 建築超美。藥妝/Uniqlo/大創一次買齊。",
-       tags:["購物"],cost:null,rating:4.3,mapUrl:MAP.shinsaibashi,
-       tips:["每逛30分鐘找間店坐下來喝茶","全程行人徒步區地板平坦","大丸百貨建築本身值得看"]},
-      {time:"20:00",emoji:"🌹",name:"晚上二選一",sub:"大阪城青屋門 OR 中之島玫瑰公園",
-       desc:"【A】青屋門：江戶城池打燈，靜謐無人潮，護城河倒影超美\n【B】中之島：6月初玫瑰尾聲！310種3700株，大正紅磚建築背景",
+       tips:["下層河道步道避開人群","章魚燒/串炸/壽喜燒隨便吃都好","藥妝/Uniqlo/大創一次買齊"]},
+      {time:"20:00",emoji:"🌙",name:"晚上二選一",sub:"大阪城青屋門 OR 中之島玫瑰公園",
+       desc:"【A】大阪城青屋門：江戶城池打燈，靜謐無人潮，護城河倒影超美，免費24小時。\n【B】中之島：6月初玫瑰尾聲！310種3700株，大正紅磚建築背景，難波橋上有石獅子。",
        tags:["觀光"],cost:"免費",
        nearbyLinks:[
-         {label:"🦉 青屋門",url:MAP.aoyamon},
-         {label:"🌹 中央公會堂",url:MAP.chuo_kokaido},
-         {label:"🦁 難波橋（石獅）",url:MAP.nambaBridge},
+         {label:"🦉 青屋門",url:M.aoyamon},
+         {label:"🌹 中央公會堂",url:M.chuoKokaido},
+         {label:"🦁 難波橋（石獅）",url:M.nambaBridge},
        ],
-       tips:["A：JR大阪城公園站走10分鐘到青屋門","B：北浜站出發，難波橋上有石獅子","看體力二選一"]},
+       tips:["A：JR大阪城公園站走10分鐘到青屋門","B：北浜站出發，難波橋上有石獅子","看體力二選一，不想走就中之島散步"]},
     ],
     alternates:[],
   },
   {
-    day:6,date:"6/6 六",emoji:"✈️",label:"臨空Outlet・返台",hotelCity:null,city:"大阪→台灣",
+    day:6,date:"6/6 六",emoji:"✈️",label:"臨空Outlet採購・返台",hotelCity:null,city:"大阪→台灣",
     spots:[
-      {time:"退房後",emoji:"🛍️",name:"臨空城 Premium Outlets",sub:"距KIX只要1站・面向大阪灣",
-       desc:"難波搭南海電鐵直達。Sea Side Area 直接面向大海，看飛機起降！旁邊有臨空之湯泡完再上飛機。",
-       tags:["購物"],cost:null,rating:4.1,mapUrl:MAP.outletMain,
+      {time:"退房後",emoji:"🛍️",name:"臨空城 Premium Outlets",sub:"距KIX只要1站・面向大阪灣海景",
+       desc:"難波搭南海電鐵直達臨空城站。Sea Side Area直接面向大海，看飛機起降！逛完可泡臨空之湯再上飛機。",
+       tags:["購物"],cost:null,rating:4.1,mapUrl:M.outletMain,
        nearbyLinks:[
-         {label:"🧳 行李寄放",url:MAP.outletLuggage},
-         {label:"🏬 Main Side主建築",url:MAP.outletMainSide},
-         {label:"🌊 Sea Side海濱區",url:MAP.outletSea},
-         {label:"📱 電器行",url:MAP.outletElec},
+         {label:"🧳 行李寄放",url:M.outletLuggage},
+         {label:"🏬 Main Side主建築",url:M.outletMainSide},
+         {label:"🌊 Sea Side海濱區",url:M.outletSea},
+         {label:"📱 電器行",url:M.outletElec},
        ],
-       tips:["行李放投幣寄物（大箱都放得下）","Sea Side有草地懶人沙發","逛完泡臨空之湯再上飛機睡超好"]},
-      {time:"16:00",emoji:"✈️",name:"前往關西機場",sub:"從Outlet只要1站・19:05航班",
-       desc:"臨空城到 KIX 只要一站！提早辦理報到，搭乘 19:05 航班返台，帶滿回憶回家！",
+       tips:["行李放投幣寄物（大箱都放得下）","Sea Side有草地懶人沙發超放鬆","逛完泡臨空之湯再上飛機睡超好","Coach/Adidas/Nike都在Main Side"]},
+      {time:"16:00",emoji:"✈️",name:"前往關西機場・返台",sub:"臨空城→KIX只要1站・19:05航班",
+       desc:"臨空城到KIX只要一站！提早辦理報到，搭乘19:05航班返台，帶滿回憶回家！",
        tags:["交通"],cost:null,
        tips:["提前2小時以上到機場","最後一次買免稅商品","一路順風！🎌"]},
     ],
@@ -394,7 +418,7 @@ function SpotCard({spot,isAlt,expanded,onToggle,accent}) {
           </div>
           <div style={{fontSize:11,color:"#8888aa",marginTop:2}}>{spot.sub}</div>
           <div style={{display:"flex",flexWrap:"wrap",gap:4,marginTop:6}}>
-            {spot.tags.map(t=><Tag key={t} tag={t}/>)}
+            {spot.tags&&spot.tags.map(t=><Tag key={t} tag={t}/>)}
             {spot.cost&&<span style={{fontSize:10,background:"#2a2a00",color:"#ffd43b",padding:"2px 8px",borderRadius:10}}>💴 {spot.cost}</span>}
             {spot.mapUrl&&(
               <button onClick={e=>{e.stopPropagation();openMap(spot.mapUrl);}}
@@ -409,7 +433,7 @@ function SpotCard({spot,isAlt,expanded,onToggle,accent}) {
       {expanded&&(
         <div style={{marginTop:12,paddingTop:12,borderTop:`1px solid ${accent}30`}}>
           <div style={{fontSize:12,color:"#b0b0cc",lineHeight:1.75,marginBottom:10,background:"#ffffff05",padding:10,borderRadius:8}}>
-            {spot.desc.split('\n').map((l,i)=><div key={i}>{l}</div>)}
+            {spot.desc&&spot.desc.split('\n').map((l,i)=><div key={i}>{l}</div>)}
           </div>
           {spot.nearbyLinks&&spot.nearbyLinks.length>0&&(
             <div style={{marginBottom:10}}>
@@ -417,7 +441,7 @@ function SpotCard({spot,isAlt,expanded,onToggle,accent}) {
               <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
                 {spot.nearbyLinks.map((lnk,li)=>(
                   <button key={li} onClick={e=>{e.stopPropagation();openMap(lnk.url);}}
-                    style={{background:"#1a2a3a",border:"1px solid #4dabf740",color:"#60a5fa",borderRadius:20,padding:"3px 8px",fontSize:9,cursor:"pointer",display:"inline-flex",alignItems:"center",gap:3}}>
+                    style={{background:"#1a2a3a",border:"1px solid #4dabf740",color:"#60a5fa",borderRadius:20,padding:"3px 8px",fontSize:9,cursor:"pointer"}}>
                     📍 {lnk.label}
                   </button>
                 ))}
@@ -426,7 +450,7 @@ function SpotCard({spot,isAlt,expanded,onToggle,accent}) {
           )}
           {spot.tips&&spot.tips.length>0&&(
             <div>
-              <div style={{fontSize:10,color:accent,fontWeight:700,marginBottom:6}}>🚀 推薦 / 注意</div>
+              <div style={{fontSize:10,color:accent,fontWeight:700,marginBottom:6}}>💡 提醒 / 推薦</div>
               {spot.tips.map((tip,ti)=>(
                 <div key={ti} style={{fontSize:11,color:"#9999bb",padding:"3px 0 3px 12px",borderLeft:`2px solid ${accent}40`,marginBottom:3,lineHeight:1.5}}>· {tip}</div>
               ))}
@@ -541,7 +565,7 @@ function App() {
               <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
                 {hotel.nearby.map((item,ni)=>{
                   const isCvn = item.name.includes("全家")||item.name.includes("7-11")||item.name.includes("LAWSON")||item.name.includes("LIFE")||item.name.includes("🏪")||item.name.includes("🛒");
-                  const isFood = item.name.includes("定食")||item.name.includes("串燒")||item.name.includes("餐廳")||item.name.includes("咖啡")||item.name.includes("麵包")||item.name.includes("🍽️")||item.name.includes("☕")||item.name.includes("🥐");
+                  const isFood = item.name.includes("定食")||item.name.includes("串燒")||item.name.includes("餐廳")||item.name.includes("咖啡")||item.name.includes("麵包")||item.name.includes("珈琲")||item.name.includes("🍽️")||item.name.includes("☕")||item.name.includes("🥐");
                   return (
                     <button key={ni} onClick={()=>openMap(item.url)}
                       style={{fontSize:11,background:isCvn?"#1a2d1a":isFood?"#3a2a10":"#1a1a2e",color:isCvn?"#86efac":isFood?"#fb923c":"#a78bfa",padding:"5px 10px",borderRadius:20,border:"none",cursor:"pointer"}}>
@@ -588,7 +612,9 @@ function App() {
             )}
             {activeDay<=2&&(
               <div style={{marginTop:6}}>
-                <div style={{fontSize:11,color:"#777",fontWeight:700,marginBottom:8}}>📌 京都任一天通用備選</div>
+                <div style={{fontSize:11,color:"#777",fontWeight:700,marginBottom:8,padding:"6px 10px",background:"#ffffff06",borderRadius:8}}>
+                  📌 京都備選清單（A–G，全部下雨/停駛可用）
+                </div>
                 {KYOTO_BACKUPS.map((item,ii)=>(
                   <div key={ii} style={{background:"#13131f",border:"1px solid #ffffff10",borderRadius:12,padding:"10px 12px",marginBottom:8,display:"flex",gap:10,alignItems:"flex-start"}}>
                     <span style={{fontSize:20}}>{item.emoji}</span>
